@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPKLU Interactive Simulation</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            500: '#2563eb', // Clean corporate blue
+                            600: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 h-screen overflow-hidden flex flex-col font-sans">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 p-4 shadow-sm z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-semibold text-slate-800 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    SPKLU Stochastic Simulator
+                </h1>
+                <p class="text-xs text-slate-500 mt-1">Real-time M/M/c/K Queueing Model</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="bg-slate-100 rounded-full px-4 py-1 text-sm border border-slate-200">
+                    <span class="text-slate-500">Status:</span> <span id="conn-status" class="text-green-600 font-medium">Online</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <div class="flex-1 flex overflow-hidden">
+        
+        <!-- Left Sidebar: Controls -->
+        <aside class="w-80 bg-white border-r border-slate-200 p-6 flex flex-col overflow-y-auto z-10">
+            <h2 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-6">
+                Parameters
+            </h2>
+
+            <div class="space-y-6">
+                <!-- Servers (c) -->
+                <div class="control-group">
+                    <div class="flex justify-between mb-2">
+                        <label class="text-sm text-slate-600 font-medium">Number of Chargers (c)</label>
+                        <span id="val-c" class="text-sm text-brand-600 font-bold">2</span>
+                    </div>
+                    <input type="range" id="slider-c" min="1" max="8" value="2" class="w-full accent-brand-500">
+                </div>
+
+                <!-- Capacity (K) -->
+                <div class="control-group">
+                    <div class="flex justify-between mb-2">
+                        <label class="text-sm text-slate-600 font-medium">System Capacity (K)</label>
+                        <span id="val-k" class="text-sm text-brand-600 font-bold">10</span>
+                    </div>
+                    <input type="range" id="slider-k" min="2" max="20" value="10" class="w-full accent-brand-500">
+                </div>
+
+                <!-- Arrival Rate (Lambda) -->
+                <div class="control-group">
+                    <div class="flex justify-between mb-2">
+                        <label class="text-sm text-slate-600 font-medium">Arrival Rate (&lambda;)</label>
+                        <span class="text-sm text-brand-600 font-bold"><span id="val-lam">5.0</span> /hr</span>
+                    </div>
+                    <input type="range" id="slider-lam" min="0.5" max="20" step="0.5" value="5.0" class="w-full accent-brand-500">
+                    <p class="text-xs text-slate-400 mt-1">Vehicles arriving per hour</p>
+                </div>
+
+                <!-- Service Rate (Mu) -->
+                <div class="control-group border-b border-slate-100 pb-6">
+                    <div class="flex justify-between mb-2">
+                        <label class="text-sm text-slate-600 font-medium">Service Rate (&mu;)</label>
+                        <span class="text-sm text-brand-600 font-bold"><span id="val-mu">2.0</span> /hr</span>
+                    </div>
+                    <input type="range" id="slider-mu" min="0.5" max="10" step="0.5" value="2.0" class="w-full accent-brand-500">
+                    <p class="text-xs text-slate-400 mt-1">Vehicles served per charger per hour (~<span id="val-mu-min">30</span> min)</p>
+                </div>
+
+                <!-- Animation Speed -->
+                <div class="control-group">
+                    <div class="flex justify-between mb-2">
+                        <label class="text-sm text-slate-600 font-medium">Simulation Speed</label>
+                        <span id="val-speed" class="text-sm text-slate-800 font-bold">10x</span>
+                    </div>
+                    <input type="range" id="slider-speed" min="1" max="100" value="10" class="w-full accent-slate-400">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center: p5.js Animation Canvas -->
+        <main class="flex-1 relative bg-slate-50 flex flex-col border-r border-slate-200">
+            <div id="canvas-container" class="flex-1 w-full h-full relative overflow-hidden">
+                <!-- p5.js canvas injects here -->
+            </div>
+            
+            <!-- Floating overlay for live simulation stats -->
+            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-lg p-4 shadow-sm">
+                <h3 class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">Current Time</h3>
+                <div class="text-2xl font-mono text-slate-800 font-medium" id="sim-clock">06:00:00</div>
+                <div class="mt-4 grid grid-cols-3 gap-6 text-sm">
+                    <div>
+                        <div class="text-slate-500 text-xs uppercase mb-1">Arrived</div>
+                        <div class="text-slate-800 font-bold text-lg" id="stat-arrived">0</div>
+                    </div>
+                    <div>
+                        <div class="text-slate-500 text-xs uppercase mb-1">Served</div>
+                        <div class="text-green-600 font-bold text-lg" id="stat-served">0</div>
+                    </div>
+                    <div>
+                        <div class="text-slate-500 text-xs uppercase mb-1">Balked</div>
+                        <div class="text-red-500 font-bold text-lg" id="stat-balked">0</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar: Metrics Comparison -->
+        <aside class="w-80 bg-white p-6 flex flex-col overflow-y-auto">
+            <h2 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-6">
+                Performance Metrics
+            </h2>
+
+            <div class="space-y-4">
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <h3 class="text-sm text-slate-700 font-medium mb-3">Server Utilization (&rho;)</h3>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <div class="text-xs text-slate-400">Theoretical</div>
+                            <div class="text-lg text-slate-600 font-mono" id="theo-rho">0.00%</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-400">Live Sim</div>
+                            <div class="text-xl text-brand-600 font-bold font-mono" id="live-rho">0.00%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <h3 class="text-sm text-slate-700 font-medium mb-3">Avg Queue Length (Lq)</h3>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <div class="text-xs text-slate-400">Theoretical</div>
+                            <div class="text-lg text-slate-600 font-mono" id="theo-lq">0.00</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-400">Live Sim</div>
+                            <div class="text-xl text-brand-600 font-bold font-mono" id="live-lq">0.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <h3 class="text-sm text-slate-700 font-medium mb-3">Avg Wait Time (Wq)</h3>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <div class="text-xs text-slate-400">Theoretical</div>
+                            <div class="text-lg text-slate-600 font-mono" id="theo-wq">0.0 min</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-400">Live Sim</div>
+                            <div class="text-xl text-brand-600 font-bold font-mono" id="live-wq">0.0 min</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <h3 class="text-sm text-slate-700 font-medium mb-3">Balking Rate (Pb)</h3>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <div class="text-xs text-slate-400">Theoretical</div>
+                            <div class="text-lg text-slate-600 font-mono" id="theo-pb">0.00%</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-400">Live Sim</div>
+                            <div class="text-xl text-red-500 font-bold font-mono" id="live-pb">0.00%</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-auto pt-6 text-xs text-slate-400 text-center">
+                M/M/c/K Stochastic Model Validation
+            </div>
+        </aside>
+    </div>
+
+    <script src="sketch.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+*.xapk
+*.apk
+apkeep
+pln_decompiled/
+pln_extracted/
+petaspklu_raw.json
+__pycache__/
+logs/
+.env
+data spklu.xlsx

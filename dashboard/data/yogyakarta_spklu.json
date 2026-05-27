@@ -1,0 +1,970 @@
+[
+  {
+    "station_id": "petaspklu_79",
+    "station_name": "SPKLU PLN UP3 Yogyakarta",
+    "address": "Jl. Gedongkuning No.3, Pringgolayan, Banguntapan, Bantul, DIY 55198",
+    "regency": "Kab Bantul",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "ultrafast",
+    "max_power_kw": 100.0,
+    "total_chargers": 9,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "standard",
+        "power_kw": 7.0,
+        "quantity": 3,
+        "chargerbox_name": "Altro AC Charger",
+        "chargerbox_id": "ALTRO_UP3_YOGYAKARTA"
+      },
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 100.0,
+        "quantity": 3,
+        "chargerbox_name": "CS DC Charger",
+        "chargerbox_id": "CSE_UP3_YOGYAKARTA"
+      },
+      {
+        "connector_type": "CCS2",
+        "charger_category": "fast",
+        "power_kw": 60.0,
+        "quantity": 3,
+        "chargerbox_name": "Proteksindo DC EVDX-60",
+        "chargerbox_id": "ID0121110012"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.809977,
+    "longitude": 110.402461
+  },
+  {
+    "station_id": "petaspklu_283",
+    "station_name": "SPKLU PLN ULP WONOSARI",
+    "address": "Jl. Kolonel Sugiyono No.5, Purbosari, Wonosari, Kec. Wonosari, Kabupaten Gunung Kidul, DIY 55851",
+    "regency": "Kab Gunungkidul",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "standard",
+    "max_power_kw": 7.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "standard",
+        "power_kw": 7.0,
+        "quantity": 1,
+        "chargerbox_name": "AC Mini Plus",
+        "chargerbox_id": "ACMP_ULP_WONOSARI"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.964085,
+    "longitude": 110.602275
+  },
+  {
+    "station_id": "petaspklu_291",
+    "station_name": "ISTANA GEDUNG AGUNG YOGYAKARTA (KHUSUS ISTANA NEGARA)",
+    "address": "Jalan Ahmad Yani, Ngupasan, Kec. Gondomanan, Kota Yogyakarta, DIY 55122",
+    "regency": "Kota Yogyakarta",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "ultrafast",
+    "max_power_kw": 100.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 100.0,
+        "quantity": 1,
+        "chargerbox_name": "Signet DC Fast Charger - 100 kW",
+        "chargerbox_id": "SIGNET_GEDUNG_AGUNG"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.80019,
+    "longitude": 110.36387
+  },
+  {
+    "station_id": "petaspklu_292",
+    "station_name": "SPKLU PLN ULP WATES",
+    "address": "Jl. KH Ahmad Dahlan, Area Sawah, Wates, Kec. Wates, Kabupaten Kulon Progo, DIY 55651",
+    "regency": "Kab Kulon Progo",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "ultrafast",
+    "max_power_kw": 100.0,
+    "total_chargers": 4,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 2,
+        "chargerbox_name": "Delta AC Max",
+        "chargerbox_id": "ACMAX_ULP_WATES"
+      },
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 100.0,
+        "quantity": 2,
+        "chargerbox_name": "Signet DC Fast Charger - 100 kW",
+        "chargerbox_id": "SIGNET_ULP_WATES"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.86604,
+    "longitude": 110.15073
+  },
+  {
+    "station_id": "petaspklu_422",
+    "station_name": "SPKLU PLN ULP SEDAYU",
+    "address": "Jl. Wates KM. 11, Argorejo, Kec. Sedayu, Kabupaten Bantul, DIY 55752",
+    "regency": "Kab Bantul",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "standard",
+    "max_power_kw": 7.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "standard",
+        "power_kw": 7.0,
+        "quantity": 1,
+        "chargerbox_name": "AC Mini Plus",
+        "chargerbox_id": "ACMP_ULP_SEDAYU"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.813045,
+    "longitude": 110.267753
+  },
+  {
+    "station_id": "petaspklu_423",
+    "station_name": "SPKLU PLN ULP SLEMAN",
+    "address": "JL. Parasamya, Beran, Beran Kidul, Tridadi, Kabupaten Sleman, DIY 55511",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "standard",
+    "max_power_kw": 7.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "standard",
+        "power_kw": 7.0,
+        "quantity": 1,
+        "chargerbox_name": "Wall Mount AC Charger",
+        "chargerbox_id": "PHG_ULP_SLEMAN"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.715846,
+    "longitude": 110.355664
+  },
+  {
+    "station_id": "petaspklu_424",
+    "station_name": "SPKLU PLN ULP KALASAN",
+    "address": "Jl. Raya Solo - Yogyakarta No.Km. 15, Kepatihan, Tamanmartani, Kec. Kalasan, Kab. Sleman, DIY 55571",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "standard",
+    "max_power_kw": 7.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "standard",
+        "power_kw": 7.0,
+        "quantity": 1,
+        "chargerbox_name": "AC Mini Plus",
+        "chargerbox_id": "ACMP_ULP_KALASAN"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.758342,
+    "longitude": 110.478909
+  },
+  {
+    "station_id": "petaspklu_427",
+    "station_name": "SPKLU Hotel Royal Ambarrukmo Yogyakarta",
+    "address": "Jl. Laksda Adisucipto No.81, Ambarukmo, Caturtunggal, Kec. Depok, Kabupaten Sleman, DIY 55281",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "ultrafast",
+    "max_power_kw": 100.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 100.0,
+        "quantity": 1,
+        "chargerbox_name": "Signet DC Fast Charger - 100 kW",
+        "chargerbox_id": "SIGNET_HOTEL_AMBARUKMO"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.782375,
+    "longitude": 110.403051
+  },
+  {
+    "station_id": "petaspklu_429",
+    "station_name": "SPKLU RISS Hotel Malioboro",
+    "address": "Jl. Gowongan Kidul, Sosromenduran, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55271",
+    "regency": "Kota Yogyakarta",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "medium",
+    "max_power_kw": 22.0,
+    "total_chargers": 4,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 2,
+        "chargerbox_name": "01. Proteksindo AC-22",
+        "chargerbox_id": "PPP_RISS_HOTEL_01"
+      },
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 2,
+        "chargerbox_name": "02. Proteksindo AC-22",
+        "chargerbox_id": "PPP_RISS_HOTEL_02"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.787639,
+    "longitude": 110.364401
+  },
+  {
+    "station_id": "petaspklu_515",
+    "station_name": "SPKLU PLN ULP BANTUL",
+    "address": "Jl. Dr. Wahidin Sudiro Husodo, Karangbayam, Bantul, Kec. Bantul, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55714",
+    "regency": "Kab Bantul",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "fast",
+    "max_power_kw": 60.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "fast",
+        "power_kw": 60.0,
+        "quantity": 1,
+        "chargerbox_name": "Proteksindo DC EVDX-60",
+        "chargerbox_id": "PPP_ULP_BANTUL"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.892746,
+    "longitude": 110.336282
+  },
+  {
+    "station_id": "petaspklu_974",
+    "station_name": "SPKLU HOTEL MERAPI MERBABU YOGYAKARTA",
+    "address": "Jl. Seturan Raya Jl. Raya Kledokan, Kledokan, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "medium",
+    "max_power_kw": 22.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 1,
+        "chargerbox_name": "CS AC Charger",
+        "chargerbox_id": "CSE_HTL_MERAPI"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.771306,
+    "longitude": 110.409746
+  },
+  {
+    "station_id": "petaspklu_979",
+    "station_name": "SPKLU Hotel KHAS Tugu Yogyakarta",
+    "address": "Jl. Pangeran Diponegoro No.99, Bumijo, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55231",
+    "regency": "Kota Yogyakarta",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "medium",
+    "max_power_kw": 22.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 1,
+        "chargerbox_name": "CS AC Charger",
+        "chargerbox_id": "CSE_HTL_KT"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.783295,
+    "longitude": 110.363121
+  },
+  {
+    "station_id": "petaspklu_1142",
+    "station_name": "SPKLU TRANSMART YOGYAKARTA",
+    "address": "Jl. Raya Solo KM. 8 No. 234, Kalongan, Maguwoharjo, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55282",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "medium",
+    "max_power_kw": 22.0,
+    "total_chargers": 4,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 2,
+        "chargerbox_name": "1. CS AC Charger",
+        "chargerbox_id": "CSE_TSM_YOGYA01"
+      },
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 2,
+        "chargerbox_name": "2. CS AC Charger",
+        "chargerbox_id": "CSE_TSM_YOGYA02"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.783013,
+    "longitude": 110.42
+  },
+  {
+    "station_id": "petaspklu_1422",
+    "station_name": "SPKLU PT BAGAS SETTO ANGGORO",
+    "address": "Jl. Kebun Raya No.1F, Rejowinangun, Kec. Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55171",
+    "regency": "Kota Yogyakarta",
+    "province": "DI Yogyakarta",
+    "operator": "PT Bagas Setto Anggoro",
+    "charger_category": "medium",
+    "max_power_kw": 25.0,
+    "total_chargers": 4,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 2,
+        "chargerbox_name": "Delta AC Max",
+        "chargerbox_id": "ACMAX_KP_JOGJA"
+      },
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 25.0,
+        "quantity": 2,
+        "chargerbox_name": "Delta DC Wallbox",
+        "chargerbox_id": "DCWB_KP_JOGJA"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.802614,
+    "longitude": 110.39848
+  },
+  {
+    "station_id": "petaspklu_1511",
+    "station_name": "SPKLU DRINI HILLS",
+    "address": "Jl. Pantai Sel. Jawa, Wonosobo, Banjarejo, Kec. Tanjungsari, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55881",
+    "regency": "Kab Gunungkidul",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "medium",
+    "max_power_kw": 22.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 1,
+        "chargerbox_name": "Teison 22 KW",
+        "chargerbox_id": "HVT_DRINIHILLS_YGY"
+      }
+    ],
+    "status": 1,
+    "latitude": -8.132166,
+    "longitude": 110.589119
+  },
+  {
+    "station_id": "petaspklu_1512",
+    "station_name": "SPKLU RS Islam Yogyakarta PDHI",
+    "address": "Jl. Jogja - Solo No.KM.12,5, Kringinan, Tirtomartani, Kec. Kalasan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55571",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "medium",
+    "max_power_kw": 22.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 1,
+        "chargerbox_name": "Teison 22 KW",
+        "chargerbox_id": "HVT_RSIY_PDHI"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.776748,
+    "longitude": 110.459227
+  },
+  {
+    "station_id": "petaspklu_1529",
+    "station_name": "SPKLU HOTEL RAMADA YOGYAKARTA",
+    "address": "Jl. Magelang No.KM 14, Jetis, Caturharjo, Kec. Sleman, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55515",
+    "regency": "Kota Yogyakarta",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "medium",
+    "max_power_kw": 22.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 1,
+        "chargerbox_name": "Teison 22 KW",
+        "chargerbox_id": "HVT_RAMADA_YGY"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.686151,
+    "longitude": 110.340825
+  },
+  {
+    "station_id": "petaspklu_1542",
+    "station_name": "SPKLU HOTEL MORAZEN YOGYAKARTA",
+    "address": "Jalan Nasional III Yogyakarta - Purworejo KM 41.5, KM 41.5, Kec. Temon, Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta 55654",
+    "regency": "Kab Kulon Progo",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "medium",
+    "max_power_kw": 22.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 1,
+        "chargerbox_name": "Teison 22 KW",
+        "chargerbox_id": "HVT_MORAZEN_YOGYA"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.886188,
+    "longitude": 110.065531
+  },
+  {
+    "station_id": "petaspklu_1641",
+    "station_name": "HOTEL TENTREM YOGYAKARTA",
+    "address": "Jl. P. Mangkubumi No.72A, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233",
+    "regency": "Kota Yogyakarta",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "fast",
+    "max_power_kw": 50.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "fast",
+        "power_kw": 50.0,
+        "quantity": 1,
+        "chargerbox_name": "Chargecore DC-50",
+        "chargerbox_id": "CC_HOTELTENTREM_YGY"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.773805,
+    "longitude": 110.368328
+  },
+  {
+    "station_id": "petaspklu_1725",
+    "station_name": "SPKLU (ARISTA POWER) BYD JOGJA",
+    "address": "Jl. Magelang Km. 5,5, Kutu Tegal, Sinduadi, Mlati, Sleman Regency, Special Region of Yogyakarta 55284",
+    "regency": "Kota Yogyakarta",
+    "province": "DI Yogyakarta",
+    "operator": "Arista Power",
+    "charger_category": "fast",
+    "max_power_kw": 60.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "fast",
+        "power_kw": 60.0,
+        "quantity": 1,
+        "chargerbox_name": "DC Charger 60 kW",
+        "chargerbox_id": "ZEEDA_BYD_YGY"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.755617,
+    "longitude": 110.362198
+  },
+  {
+    "station_id": "petaspklu_1816",
+    "station_name": "SPKLU CENTER UP3 YOGYAKARTA",
+    "address": "Jl. Gedongkuning No.3, Tegal Tandan, Banguntapan, Kec. Banguntapan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55198",
+    "regency": "Kab Bantul",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "ultrafast",
+    "max_power_kw": 200.0,
+    "total_chargers": 16,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 200.0,
+        "quantity": 4,
+        "chargerbox_name": "1. Teison DC 200 kW",
+        "chargerbox_id": "HVT_UP3_YOGYAKARTA01"
+      },
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 200.0,
+        "quantity": 4,
+        "chargerbox_name": "2. Teison DC 200 kW",
+        "chargerbox_id": "HVT_UP3_YOGYAKARTA02"
+      },
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 200.0,
+        "quantity": 4,
+        "chargerbox_name": "3. Teison DC 200 kW",
+        "chargerbox_id": "HVT_UP3_YOGYAKARTA03"
+      },
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 120.0,
+        "quantity": 4,
+        "chargerbox_name": "4. Teison DC 120 kW",
+        "chargerbox_id": "HVT_UP3_YOGYAKARTA04"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.810381,
+    "longitude": 110.403557
+  },
+  {
+    "station_id": "petaspklu_1853",
+    "station_name": "SPKLU EVCITY CENTER UP3 YOGYAKARTA",
+    "address": "Jl. Gedongkuning No.3, Tegal Tandan, Banguntapan, Kec. Banguntapan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55198",
+    "regency": "Kab Bantul",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "ultrafast",
+    "max_power_kw": 120.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 120.0,
+        "quantity": 1,
+        "chargerbox_name": "EV City DC 120 kW",
+        "chargerbox_id": "EVCITY_UP3_YOGYAKARTA"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.810381,
+    "longitude": 110.403557
+  },
+  {
+    "station_id": "petaspklu_1986",
+    "station_name": "SPKLU UCI BENY UP3 YOGYAKARTA",
+    "address": "Jl. Gedongkuning No.3, Tegal Tandan, Banguntapan, Kec. Banguntapan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55198",
+    "regency": "Kab Bantul",
+    "province": "DI Yogyakarta",
+    "operator": "PLN",
+    "charger_category": "ultrafast",
+    "max_power_kw": 120.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 120.0,
+        "quantity": 1,
+        "chargerbox_name": "BENY DC 120 KW",
+        "chargerbox_id": "BENY_UP3_YOGYAKARTA"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.810381,
+    "longitude": 110.403557
+  },
+  {
+    "station_id": "petaspklu_2054",
+    "station_name": "Hyundai Adisucipto (Khusus Kendaraan Hyundai)",
+    "address": "Karangploso, Maguwoharjo, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "Hyundai",
+    "charger_category": "fast",
+    "max_power_kw": 74.0,
+    "total_chargers": 4,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "fast",
+        "power_kw": 74.0,
+        "quantity": 2,
+        "chargerbox_name": "AC Mini Plus",
+        "chargerbox_id": "HYUNDAI_ADISUCIPTO_1"
+      },
+      {
+        "connector_type": "CCS2",
+        "charger_category": "fast",
+        "power_kw": 74.0,
+        "quantity": 2,
+        "chargerbox_name": "AC Mini Plus",
+        "chargerbox_id": "HYUNDAI_ADISUCIPTO_2"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.783554,
+    "longitude": 110.42815
+  },
+  {
+    "station_id": "petaspklu_2086",
+    "station_name": "Hyundai Mlati (Khusus Kendaraan Hyundai)",
+    "address": "Suku Cadang Mitsubishi, Kutu Tegal, Sinduadi, Kec. Mlati, Kabupaten Sleman, DIY",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "Hyundai",
+    "charger_category": "fast",
+    "max_power_kw": 74.0,
+    "total_chargers": 4,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "fast",
+        "power_kw": 74.0,
+        "quantity": 2,
+        "chargerbox_name": "AC Mini Plus",
+        "chargerbox_id": "HYUNDAI_MLATI_1"
+      },
+      {
+        "connector_type": "CCS2",
+        "charger_category": "fast",
+        "power_kw": 74.0,
+        "quantity": 2,
+        "chargerbox_name": "AC Mini Plus",
+        "chargerbox_id": "HYUNDAI_MLATI_2"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.757149,
+    "longitude": 110.36226
+  },
+  {
+    "station_id": "petaspklu_2307",
+    "station_name": "(WULING) AJM Yogyakarta",
+    "address": "Jl. Ring Road Utara No.67, Nayan, Maguwoharjo, Depok, Sleman, DI Yogyakarta 55282",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "Wuling",
+    "charger_category": "standard",
+    "max_power_kw": 7.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "standard",
+        "power_kw": 7.0,
+        "quantity": 1,
+        "chargerbox_name": "Wuling AC 7 kW",
+        "chargerbox_id": "WULING_AJM_YOGYAKARTA"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.774779,
+    "longitude": 110.430608
+  },
+  {
+    "station_id": "petaspklu_2312",
+    "station_name": "(WULING) AJM Mlati",
+    "address": "Jl. Magelang, Jongke Tengah, Sendangadi, Kec. Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55285",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "Wuling",
+    "charger_category": "standard",
+    "max_power_kw": 7.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "standard",
+        "power_kw": 7.0,
+        "quantity": 1,
+        "chargerbox_name": "Wuling AC 7 kW",
+        "chargerbox_id": "WULING_AJM_MLATI"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.73771,
+    "longitude": 110.363157
+  },
+  {
+    "station_id": "petaspklu_2422",
+    "station_name": "Nasmoco Bantul (UFC)",
+    "address": "Jl. Ringroad Selatan, Jadan, Tamantirto, Kec. Kasihan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55183",
+    "regency": "Kab Bantul",
+    "province": "DI Yogyakarta",
+    "operator": "Nasmoco/Toyota",
+    "charger_category": "ultrafast",
+    "max_power_kw": 120.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 120.0,
+        "quantity": 1,
+        "chargerbox_name": "Altro DC Charger",
+        "chargerbox_id": "ALTRO_NASMOCO_BANTUL"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.8200974,
+    "longitude": 110.324146
+  },
+  {
+    "station_id": "petaspklu_2475",
+    "station_name": "(PARKING+) Jogja City Mall",
+    "address": "Jl. Magelang KM 6 No. 18, Kutu Patran, Sinduadi, Mlati, Sleman Regency, Special Region of Yogyakarta 55284",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "Parking+",
+    "charger_category": "medium",
+    "max_power_kw": 22.0,
+    "total_chargers": 4,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 2,
+        "chargerbox_name": "1. TIAR AC (PARKING+)",
+        "chargerbox_id": "PARKING+JOGJA_CITY_MALL_1"
+      },
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 2,
+        "chargerbox_name": "2. TIAR AC (PARKING+)",
+        "chargerbox_id": "PARKING+JOGJA_CITY_MALL_2"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.753029,
+    "longitude": 110.361249
+  },
+  {
+    "station_id": "petaspklu_2808",
+    "station_name": "(DayaGreen) Hotel New Saphir Yogyakarta",
+    "address": "Area Parkir Hotel New Saphir, Kota Yogyakarta, Jl. Laksda Adisucipto No.38, Demangan, Kec. Gondokusuman, Kota Yogyakarta, DIY",
+    "regency": "Kota Yogyakarta",
+    "province": "DI Yogyakarta",
+    "operator": "DayaGreen",
+    "charger_category": "standard",
+    "max_power_kw": 7.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "standard",
+        "power_kw": 7.0,
+        "quantity": 1,
+        "chargerbox_name": "INJECT AC 7 KW",
+        "chargerbox_id": "DG_HOTEL_NEW_SAPHIR"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.7833018,
+    "longitude": 110.3914009
+  },
+  {
+    "station_id": "petaspklu_2988",
+    "station_name": "(Terra Charge) Barsa City Yogyakarta",
+    "address": "Jl. Laksda Adi Sutjipto Km. 7, Flyover, Janti, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281",
+    "regency": "Kab Sleman",
+    "province": "DI Yogyakarta",
+    "operator": "Terra Charge",
+    "charger_category": "medium",
+    "max_power_kw": 22.0,
+    "total_chargers": 1,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "Type 2 AC",
+        "charger_category": "medium",
+        "power_kw": 22.0,
+        "quantity": 1,
+        "chargerbox_name": "Terra Charge AC",
+        "chargerbox_id": "TC_BARSA_CITY_YK"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.780804,
+    "longitude": 110.412236
+  },
+  {
+    "station_id": "petaspklu_3058",
+    "station_name": "(iGreen+) 107 Yogyakarta",
+    "address": "Brontokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta",
+    "regency": "Kota Yogyakarta",
+    "province": "DI Yogyakarta",
+    "operator": "iGreen+",
+    "charger_category": "ultrafast",
+    "max_power_kw": 120.0,
+    "total_chargers": 4,
+    "photo_url": null,
+    "operational_hours": "24 jam",
+    "source": "petaspklu.id",
+    "connectors": [
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 120.0,
+        "quantity": 2,
+        "chargerbox_name": "1. CSE DC 120 kW",
+        "chargerbox_id": "IGREEN_107_YOGYA1"
+      },
+      {
+        "connector_type": "CCS2",
+        "charger_category": "ultrafast",
+        "power_kw": 120.0,
+        "quantity": 2,
+        "chargerbox_name": "2. CSE DC 120 kW",
+        "chargerbox_id": "IGREEN_107_YOGYA2"
+      }
+    ],
+    "status": 1,
+    "latitude": -7.824175,
+    "longitude": 110.3698
+  }
+]
