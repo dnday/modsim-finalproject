@@ -4,6 +4,7 @@ Non-Homogeneous Poisson Process (NHPP) arrival generator.
 Implements a time-varying arrival rate with peak/off-peak periods
 and uses the Lewis-Shedler thinning algorithm to generate arrivals.
 """
+from __future__ import annotations
 
 import numpy as np
 from numpy.random import Generator
