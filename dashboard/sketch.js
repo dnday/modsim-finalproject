@@ -7,8 +7,8 @@
 var simParams = {
     c: 2,
     K: 10,
-    lam: 5.0,
-    mu: 2.0,
+    lam: 8.0,    // arrival rate: 8 vehicles/hour (peak, from journal)
+    mu: 1.4,     // service rate: 1.4 vehicles/hour per charger (DCFC 50kW ≈ 43 min/sesi)
     speed: 10
 };
 

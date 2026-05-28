@@ -41,15 +41,13 @@ async def get_theoretical_metrics(params: SimulationParams):
         raise HTTPException(status_code=400, detail="K (capacity) must be >= c (chargers)")
 
     try:
-        # Convert rates to per minute
-        lam_min = params.lambda_rate / 60.0
-        mu_min = params.mu_rate / 60.0
-
+        # compute_metrics expects rates in vehicles/hour (see analytical.py docstring)
+        # No conversion needed — slider values are already per-hour
         metrics = compute_metrics(
             c=params.c,
             K=params.K,
-            lam=lam_min,
-            mu=mu_min
+            lam=params.lambda_rate,
+            mu=params.mu_rate
         )
         return metrics
     except Exception as e:
