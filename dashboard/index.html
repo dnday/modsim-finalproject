@@ -3,166 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPKLU Interactive Simulation — M/M/c/K Queueing Model</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>SPKLU Simulator — M/M/c/K Queueing Model</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-[#f2f2f7] text-[#1d1d1f] h-screen overflow-hidden flex flex-col font-sans antialiased">
 
     <!-- Header -->
-    <header id="app-header">
-        <div class="header-left">
-            <h1>⚡ SPKLU Simulator</h1>
-            <span class="subtitle">Real-time M/M/c/K Queueing Model</span>
+    <header class="h-14 flex items-center justify-between px-6 bg-white/70 backdrop-blur-xl border-b border-black/5 z-20 relative">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-sm">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <div>
+                <h1 class="text-[15px] font-semibold tracking-tight">SPKLU Simulator</h1>
+            </div>
         </div>
-        <div class="header-right">
-            <span class="status-badge" id="conn-status">● Online</span>
+        <div class="flex items-center gap-3">
+            <span class="text-xs font-medium text-[#86868b]">M/M/c/K Model</span>
+            <div class="h-4 w-px bg-black/10"></div>
+            <span id="conn-status" class="text-xs font-medium text-green-600">● Online</span>
         </div>
     </header>
 
-    <!-- Main Layout -->
-    <div id="app-layout">
+    <!-- Layout -->
+    <div class="flex-1 flex overflow-hidden">
 
-        <!-- Left Panel: Controls -->
-        <aside id="panel-left">
-            <h2 class="panel-title">Parameters</h2>
+        <!-- Left: Controls -->
+        <aside class="w-[280px] min-w-[280px] bg-white/60 backdrop-blur-2xl border-r border-black/5 p-5 flex flex-col overflow-y-auto z-10 relative">
+            <p class="text-[11px] font-semibold uppercase tracking-widest text-[#86868b] mb-5">Parameters</p>
 
-            <div class="control-group">
-                <div class="control-label">
-                    <span>Number of Chargers (c)</span>
-                    <strong id="val-c">2</strong>
+            <div class="space-y-5">
+                <div>
+                    <div class="flex justify-between items-baseline mb-2">
+                        <label class="text-[13px] text-[#1d1d1f]">Chargers (c)</label>
+                        <span id="val-c" class="text-[13px] font-semibold text-blue-600 tabular-nums">2</span>
+                    </div>
+                    <input type="range" id="slider-c" min="1" max="8" value="2" step="1" class="slider">
                 </div>
-                <input type="range" id="slider-c" min="1" max="8" value="2" step="1">
+
+                <div>
+                    <div class="flex justify-between items-baseline mb-2">
+                        <label class="text-[13px] text-[#1d1d1f]">Capacity (K)</label>
+                        <span id="val-k" class="text-[13px] font-semibold text-blue-600 tabular-nums">10</span>
+                    </div>
+                    <input type="range" id="slider-k" min="2" max="20" value="10" step="1" class="slider">
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-baseline mb-2">
+                        <label class="text-[13px] text-[#1d1d1f]">Arrival Rate (λ)</label>
+                        <span class="text-[13px] font-semibold text-blue-600 tabular-nums"><span id="val-lam">5.0</span>/hr</span>
+                    </div>
+                    <input type="range" id="slider-lam" min="0.5" max="20" step="0.5" value="5.0" class="slider">
+                    <p class="text-[11px] text-[#86868b] mt-1">Vehicles arriving per hour</p>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-baseline mb-2">
+                        <label class="text-[13px] text-[#1d1d1f]">Service Rate (μ)</label>
+                        <span class="text-[13px] font-semibold text-blue-600 tabular-nums"><span id="val-mu">2.0</span>/hr</span>
+                    </div>
+                    <input type="range" id="slider-mu" min="0.5" max="10" step="0.5" value="2.0" class="slider">
+                    <p class="text-[11px] text-[#86868b] mt-1">~<span id="val-mu-min">30</span> min per vehicle</p>
+                </div>
+
+                <div class="pt-3 border-t border-black/5">
+                    <div class="flex justify-between items-baseline mb-2">
+                        <label class="text-[13px] text-[#1d1d1f]">Speed</label>
+                        <span id="val-speed" class="text-[13px] font-semibold text-[#1d1d1f] tabular-nums">10×</span>
+                    </div>
+                    <input type="range" id="slider-speed" min="1" max="100" value="10" step="1" class="slider">
+                </div>
             </div>
 
-            <div class="control-group">
-                <div class="control-label">
-                    <span>System Capacity (K)</span>
-                    <strong id="val-k">10</strong>
-                </div>
-                <input type="range" id="slider-k" min="2" max="20" value="10" step="1">
-            </div>
-
-            <div class="control-group">
-                <div class="control-label">
-                    <span>Arrival Rate (λ)</span>
-                    <strong><span id="val-lam">5.0</span> /hr</strong>
-                </div>
-                <input type="range" id="slider-lam" min="0.5" max="20" step="0.5" value="5.0">
-                <p class="control-hint">Vehicles arriving per hour</p>
-            </div>
-
-            <div class="control-group">
-                <div class="control-label">
-                    <span>Service Rate (μ)</span>
-                    <strong><span id="val-mu">2.0</span> /hr</strong>
-                </div>
-                <input type="range" id="slider-mu" min="0.5" max="10" step="0.5" value="2.0">
-                <p class="control-hint">~<span id="val-mu-min">30</span> min per vehicle</p>
-            </div>
-
-            <hr class="divider">
-
-            <div class="control-group">
-                <div class="control-label">
-                    <span>Simulation Speed</span>
-                    <strong id="val-speed">10×</strong>
-                </div>
-                <input type="range" id="slider-speed" min="1" max="100" value="10" step="1">
-            </div>
-
-            <div class="button-group">
-                <button id="btn-play" type="button">▶ Play</button>
-                <button id="btn-reset" type="button">↺ Reset</button>
+            <div class="flex gap-2 mt-6">
+                <button id="btn-play" class="flex-1 h-9 rounded-lg bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white text-[13px] font-semibold transition-colors shadow-sm">▶ Play</button>
+                <button id="btn-reset" class="flex-1 h-9 rounded-lg bg-black/[0.04] hover:bg-black/[0.08] active:bg-black/[0.12] text-[#1d1d1f] text-[13px] font-semibold transition-colors">↺ Reset</button>
             </div>
         </aside>
 
         <!-- Center: Canvas -->
-        <main id="panel-center">
-            <div id="canvas-container"></div>
+        <main class="flex-1 relative overflow-hidden">
+            <div id="canvas-container" class="w-full h-full"></div>
 
-            <!-- Floating clock overlay -->
-            <div id="overlay-clock">
-                <div class="clock-label">Simulation Time</div>
-                <div class="clock-value" id="sim-clock">06:00:00</div>
-                <div class="clock-stats">
-                    <div class="clock-stat">
-                        <span class="stat-num" id="stat-arrived">0</span>
-                        <span class="stat-label">Arrived</span>
+            <!-- Clock overlay — glass card -->
+            <div class="absolute top-4 left-4 bg-white/70 backdrop-blur-2xl border border-white/30 rounded-2xl p-4 shadow-lg shadow-black/5 z-10">
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-[#86868b] mb-1">Simulation Time</p>
+                <p class="text-[28px] font-semibold tracking-tight tabular-nums text-[#1d1d1f] leading-none" id="sim-clock">06:00:00</p>
+                <div class="flex gap-5 mt-3 pt-3 border-t border-black/5">
+                    <div>
+                        <p class="text-[18px] font-semibold tabular-nums text-[#1d1d1f] leading-none" id="stat-arrived">0</p>
+                        <p class="text-[10px] text-[#86868b] mt-1 uppercase tracking-wide">Arrived</p>
                     </div>
-                    <div class="clock-stat">
-                        <span class="stat-num green" id="stat-served">0</span>
-                        <span class="stat-label">Served</span>
+                    <div>
+                        <p class="text-[18px] font-semibold tabular-nums text-green-600 leading-none" id="stat-served">0</p>
+                        <p class="text-[10px] text-[#86868b] mt-1 uppercase tracking-wide">Served</p>
                     </div>
-                    <div class="clock-stat">
-                        <span class="stat-num red" id="stat-balked">0</span>
-                        <span class="stat-label">Balked</span>
+                    <div>
+                        <p class="text-[18px] font-semibold tabular-nums text-red-500 leading-none" id="stat-balked">0</p>
+                        <p class="text-[10px] text-[#86868b] mt-1 uppercase tracking-wide">Balked</p>
                     </div>
                 </div>
             </div>
         </main>
 
-        <!-- Right Panel: Metrics -->
-        <aside id="panel-right">
-            <h2 class="panel-title">Performance Metrics</h2>
+        <!-- Right: Metrics -->
+        <aside class="w-[300px] min-w-[300px] bg-white/60 backdrop-blur-2xl border-l border-black/5 p-5 flex flex-col overflow-y-auto z-10 relative">
+            <p class="text-[11px] font-semibold uppercase tracking-widest text-[#86868b] mb-5">Performance</p>
 
-            <div class="metric-card">
-                <h3>Server Utilization (ρ)</h3>
-                <div class="metric-row">
-                    <div class="metric-col">
-                        <span class="metric-label">Theoretical</span>
-                        <span class="metric-value muted" id="theo-rho">—</span>
-                    </div>
-                    <div class="metric-col right">
-                        <span class="metric-label">Live Sim</span>
-                        <span class="metric-value" id="live-rho">0.00%</span>
+            <div class="space-y-3">
+
+                <!-- Metric: rho -->
+                <div class="rounded-xl bg-white/80 border border-black/[0.04] p-4 shadow-sm shadow-black/[0.02]">
+                    <p class="text-[12px] font-medium text-[#86868b] mb-3">Server Utilization (ρ)</p>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-[10px] text-[#aeaeb2] uppercase mb-0.5">Theoretical</p>
+                            <p class="text-[17px] font-semibold tabular-nums text-[#48484a]" id="theo-rho">—</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-[#aeaeb2] uppercase mb-0.5">Live Sim</p>
+                            <p class="text-[22px] font-bold tabular-nums text-[#1d1d1f] leading-none" id="live-rho">0.00%</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="metric-card">
-                <h3>Avg Queue Length (L<sub>q</sub>)</h3>
-                <div class="metric-row">
-                    <div class="metric-col">
-                        <span class="metric-label">Theoretical</span>
-                        <span class="metric-value muted" id="theo-lq">—</span>
-                    </div>
-                    <div class="metric-col right">
-                        <span class="metric-label">Live Sim</span>
-                        <span class="metric-value" id="live-lq">0.00</span>
+                <!-- Metric: Lq -->
+                <div class="rounded-xl bg-white/80 border border-black/[0.04] p-4 shadow-sm shadow-black/[0.02]">
+                    <p class="text-[12px] font-medium text-[#86868b] mb-3">Avg Queue Length (L<sub>q</sub>)</p>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-[10px] text-[#aeaeb2] uppercase mb-0.5">Theoretical</p>
+                            <p class="text-[17px] font-semibold tabular-nums text-[#48484a]" id="theo-lq">—</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-[#aeaeb2] uppercase mb-0.5">Live Sim</p>
+                            <p class="text-[22px] font-bold tabular-nums text-[#1d1d1f] leading-none" id="live-lq">0.00</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="metric-card">
-                <h3>Avg Wait Time (W<sub>q</sub>)</h3>
-                <div class="metric-row">
-                    <div class="metric-col">
-                        <span class="metric-label">Theoretical</span>
-                        <span class="metric-value muted" id="theo-wq">—</span>
-                    </div>
-                    <div class="metric-col right">
-                        <span class="metric-label">Live Sim</span>
-                        <span class="metric-value" id="live-wq">0.0 min</span>
+                <!-- Metric: Wq -->
+                <div class="rounded-xl bg-white/80 border border-black/[0.04] p-4 shadow-sm shadow-black/[0.02]">
+                    <p class="text-[12px] font-medium text-[#86868b] mb-3">Avg Wait Time (W<sub>q</sub>)</p>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-[10px] text-[#aeaeb2] uppercase mb-0.5">Theoretical</p>
+                            <p class="text-[17px] font-semibold tabular-nums text-[#48484a]" id="theo-wq">—</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-[#aeaeb2] uppercase mb-0.5">Live Sim</p>
+                            <p class="text-[22px] font-bold tabular-nums text-[#1d1d1f] leading-none" id="live-wq">0.0 min</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="metric-card">
-                <h3>Balking Probability (P<sub>b</sub>)</h3>
-                <div class="metric-row">
-                    <div class="metric-col">
-                        <span class="metric-label">Theoretical</span>
-                        <span class="metric-value muted" id="theo-pb">—</span>
-                    </div>
-                    <div class="metric-col right">
-                        <span class="metric-label">Live Sim</span>
-                        <span class="metric-value" id="live-pb">0.00%</span>
+                <!-- Metric: Pb -->
+                <div class="rounded-xl bg-white/80 border border-black/[0.04] p-4 shadow-sm shadow-black/[0.02]">
+                    <p class="text-[12px] font-medium text-[#86868b] mb-3">Balking Probability (P<sub>b</sub>)</p>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-[10px] text-[#aeaeb2] uppercase mb-0.5">Theoretical</p>
+                            <p class="text-[17px] font-semibold tabular-nums text-[#48484a]" id="theo-pb">—</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] text-[#aeaeb2] uppercase mb-0.5">Live Sim</p>
+                            <p class="text-[22px] font-bold tabular-nums text-[#1d1d1f] leading-none" id="live-pb">0.00%</p>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
-            <div class="panel-footer">M/M/c/K Stochastic Model Validation</div>
+            <p class="mt-auto pt-5 text-[11px] text-[#aeaeb2] text-center">M/M/c/K Stochastic Model Validation</p>
         </aside>
     </div>
 
