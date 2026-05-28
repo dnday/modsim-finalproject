@@ -1,6 +1,6 @@
 // ==========================================
 // SPKLU p5.js Real-time Simulation Engine
-// Apple Glass Edition
+// Apple Glass Edition — 3D Sprite Version
 // ==========================================
 
 // --- Parameters ---
@@ -29,10 +29,23 @@ var servedCountForAvg = 0;
 
 // --- Constants ---
 var START_HOUR = 6;
-var CHARGER_W = 52;
-var CHARGER_H = 68;
-var CAR_W = 34;
-var CAR_H = 56;
+var CHARGER_W = 60;
+var CHARGER_H = 90;
+var CAR_W = 60;
+var CAR_H = 70;
+
+// --- Sprite Images ---
+var imgCar;
+var imgCharger;
+
+// ==========================================
+// Preload (load images before setup)
+// ==========================================
+
+function preload() {
+    imgCar = loadImage('assets/car.png');
+    imgCharger = loadImage('assets/charger.png');
+}
 
 // ==========================================
 // Setup & Resize
@@ -42,6 +55,7 @@ function setup() {
     var container = document.getElementById('canvas-container');
     var canvas = createCanvas(container.offsetWidth, container.offsetHeight);
     canvas.parent('canvas-container');
+    imageMode(CENTER);
     textFont('Inter');
     initSliders();
     updateChargerPositions();
@@ -168,7 +182,7 @@ function updateChargerPositions() {
         var rem = chargers.pop();
         if (rem.car) rem.car.status = 'leaving';
     }
-    var spacing = 90;
+    var spacing = 110;
     var totalW = c * spacing;
     var startX = width / 2 - totalW / 2 + spacing / 2;
     for (var i = 0; i < chargers.length; i++) {
@@ -269,36 +283,25 @@ function drawCharger(ch) {
     push();
     translate(ch.x, ch.y);
 
-    // Shadow
+    // 3D charger sprite
+    image(imgCharger, 0, 0, CHARGER_W, CHARGER_H);
+
+    // Status dot overlay
     noStroke();
-    fill(0, 0, 0, 8);
-    rect(-CHARGER_W / 2 + 2, -CHARGER_H / 2 + 3, CHARGER_W, CHARGER_H, 8);
-
-    // Body
-    fill(255);
-    stroke(0, 0, 0, 15);
-    strokeWeight(1);
-    rect(-CHARGER_W / 2, -CHARGER_H / 2, CHARGER_W, CHARGER_H, 8);
-
-    // Screen area
-    noStroke();
-    fill(242, 242, 247);
-    rect(-CHARGER_W / 2 + 8, -CHARGER_H / 2 + 8, CHARGER_W - 16, CHARGER_H - 30, 4);
-
-    // Status dot
     if (ch.car) {
-        fill(255, 59, 48); // SF Red
+        fill(255, 59, 48, 200); // Red = busy
     } else {
-        fill(52, 199, 89); // SF Green
+        fill(52, 199, 89, 200); // Green = available
     }
-    circle(0, CHARGER_H / 2 - 12, 7);
+    circle(0, CHARGER_H / 2 + 8, 10);
 
     // Label
-    noStroke();
-    fill(174, 174, 178);
-    textSize(9);
+    fill(142, 142, 147);
+    textSize(10);
     textAlign(CENTER);
-    text('C' + (ch.id + 1), 0, -CHARGER_H / 2 - 8);
+    textStyle(BOLD);
+    text('C' + (ch.id + 1), 0, -CHARGER_H / 2 - 10);
+    textStyle(NORMAL);
 
     pop();
 }
@@ -311,33 +314,25 @@ function drawCar(car) {
     push();
     translate(car.x, car.y);
 
-    // Shadow
-    noStroke();
-    fill(0, 0, 0, 10);
-    rect(-CAR_W / 2 + 1, -CAR_H / 2 + 2, CAR_W, CAR_H, 8);
-
-    // Body
-    fill(car.color);
-    stroke(0, 0, 0, 20);
-    strokeWeight(0.5);
-    rect(-CAR_W / 2, -CAR_H / 2, CAR_W, CAR_H, 8);
-
-    // Windshield
-    noStroke();
-    fill(255, 255, 255, 120);
-    rect(-CAR_W / 2 + 5, -CAR_H / 2 + 7, CAR_W - 10, 12, 3);
-
-    // Rear window
-    fill(255, 255, 255, 80);
-    rect(-CAR_W / 2 + 5, CAR_H / 2 - 17, CAR_W - 10, 10, 3);
+    // Slight color tint per car
+    tint(car.color[0], car.color[1], car.color[2]);
+    image(imgCar, 0, 0, CAR_W, CAR_H);
+    noTint();
 
     // Wait label
     if (car.status === 'queueing') {
-        fill(142, 142, 147);
+        // Background pill
+        var label = (car.waitTime * 60).toFixed(0) + 'm';
+        fill(0, 0, 0, 140);
         noStroke();
-        textAlign(CENTER);
+        rectMode(CENTER);
+        rect(0, -CAR_H / 2 - 12, 30, 16, 8);
+        rectMode(CORNER);
+        // Text
+        fill(255);
+        textAlign(CENTER, CENTER);
         textSize(9);
-        text((car.waitTime * 60).toFixed(0) + 'm', 0, -CAR_H / 2 - 8);
+        text(label, 0, -CAR_H / 2 - 12);
     }
 
     pop();
