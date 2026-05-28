@@ -181,21 +181,47 @@ input[type="range"]::-moz-range-thumb {
     cursor: pointer;
 }
 
-/* --- Reset Button --- */
-#btn-reset {
-    display: block;
-    width: 100%;
+/* --- Button Group --- */
+.button-group {
+    display: flex;
+    gap: 8px;
     margin-top: 24px;
+}
+
+.button-group button {
+    flex: 1;
     padding: 10px;
     font-family: var(--font);
     font-size: 13px;
     font-weight: 600;
-    color: var(--text-secondary);
-    background: var(--bg);
-    border: 1px solid var(--border);
     border-radius: var(--radius);
     cursor: pointer;
     transition: background 0.15s ease, color 0.15s ease;
+}
+
+#btn-play {
+    color: #ffffff;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+#btn-play:hover {
+    background: #1d4ed8;
+}
+
+#btn-play.playing {
+    background: #dc2626;
+    border-color: #dc2626;
+}
+
+#btn-play.playing:hover {
+    background: #b91c1c;
+}
+
+#btn-reset {
+    color: var(--text-secondary);
+    background: var(--bg);
+    border: 1px solid var(--border);
 }
 
 #btn-reset:hover {

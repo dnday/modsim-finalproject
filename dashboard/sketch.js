@@ -17,6 +17,7 @@ var chargers = [];
 var queue = [];
 var nextSpawnDelay = 0;
 var simClockSeconds = 0;
+var isPlaying = false;
 
 // --- Counters ---
 var statArrived = 0;
@@ -112,6 +113,21 @@ function initSliders() {
         }
     });
 
+    // Play/Pause button
+    var playBtn = document.getElementById('btn-play');
+    if (playBtn) {
+        playBtn.addEventListener('click', function() {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                playBtn.innerText = '⏸ Pause';
+                playBtn.classList.add('playing');
+            } else {
+                playBtn.innerText = '▶ Play';
+                playBtn.classList.remove('playing');
+            }
+        });
+    }
+
     // Reset button
     var resetBtn = document.getElementById('btn-reset');
     if (resetBtn) {
@@ -204,34 +220,48 @@ function draw() {
 
     drawScene();
 
-    var dt = (deltaTime / 1000.0) * simParams.speed; // sim seconds per frame
-    var dtHours = dt / 3600.0;
+    // Only advance simulation when playing
+    if (isPlaying) {
+        var dt = (deltaTime / 1000.0) * simParams.speed; // sim seconds per frame
+        var dtHours = dt / 3600.0;
 
-    simClockSeconds += dt;
+        simClockSeconds += dt;
 
-    // --- Spawn Logic (Poisson arrivals) ---
-    if (nextSpawnDelay <= 0) {
-        spawnVehicle();
-        nextSpawnDelay = randExp(simParams.lam) * 3600; // hours -> seconds
+        // --- Spawn Logic (Poisson arrivals) ---
+        if (nextSpawnDelay <= 0) {
+            spawnVehicle();
+            nextSpawnDelay = randExp(simParams.lam) * 3600; // hours -> seconds
+        }
+        nextSpawnDelay -= dt;
+
+        // --- Update vehicles ---
+        processVehicles(dtHours);
     }
-    nextSpawnDelay -= dt;
 
-    // --- Update vehicles ---
-    processVehicles(dtHours);
-
-    // --- Draw chargers ---
+    // --- Draw chargers (always) ---
     for (var i = 0; i < chargers.length; i++) {
         drawCharger(chargers[i]);
     }
 
-    // --- Draw cars ---
+    // --- Draw cars (always, so they still animate to position) ---
     for (var j = 0; j < cars.length; j++) {
-        updateCarVisual(cars[j]);
+        if (isPlaying) updateCarVisual(cars[j]);
         drawCar(cars[j]);
     }
 
     // --- Update HUD ---
     updateHUD();
+
+    // --- Draw paused overlay ---
+    if (!isPlaying) {
+        fill(245, 245, 245, 160);
+        noStroke();
+        rect(0, 0, width, height);
+        fill(100);
+        textSize(16);
+        textAlign(CENTER, CENTER);
+        text('Press ▶ Play to start simulation', width / 2, height / 2);
+    }
 }
 
 // ==========================================
