@@ -1,6 +1,6 @@
 // ==========================================
 // SPKLU p5.js Real-time Simulation Engine
-// Apple Glass Edition — 3D Sprite Version
+// Apple Glass Edition — Premium Vector
 // ==========================================
 
 // --- Parameters ---
@@ -29,23 +29,10 @@ var servedCountForAvg = 0;
 
 // --- Constants ---
 var START_HOUR = 6;
-var CHARGER_W = 60;
-var CHARGER_H = 90;
-var CAR_W = 60;
-var CAR_H = 70;
-
-// --- Sprite Images ---
-var imgCar;
-var imgCharger;
-
-// ==========================================
-// Preload (load images before setup)
-// ==========================================
-
-function preload() {
-    imgCar = loadImage('assets/car.png');
-    imgCharger = loadImage('assets/charger.png');
-}
+var CHARGER_W = 56;
+var CHARGER_H = 76;
+var CAR_W = 38;
+var CAR_H = 68;
 
 // ==========================================
 // Setup & Resize
@@ -55,7 +42,6 @@ function setup() {
     var container = document.getElementById('canvas-container');
     var canvas = createCanvas(container.offsetWidth, container.offsetHeight);
     canvas.parent('canvas-container');
-    imageMode(CENTER);
     textFont('Inter');
     initSliders();
     updateChargerPositions();
@@ -283,21 +269,38 @@ function drawCharger(ch) {
     push();
     translate(ch.x, ch.y);
 
-    // 3D charger sprite
-    image(imgCharger, 0, 0, CHARGER_W, CHARGER_H);
-
-    // Status dot overlay
+    // Soft drop shadow
     noStroke();
+    fill(0, 0, 0, 15);
+    rect(-CHARGER_W / 2 + 4, -CHARGER_H / 2 + 6, CHARGER_W, CHARGER_H, 12);
+
+    // Main Body (White)
+    fill(255);
+    stroke(0, 0, 0, 20);
+    strokeWeight(1);
+    rect(-CHARGER_W / 2, -CHARGER_H / 2, CHARGER_W, CHARGER_H, 12);
+
+    // Screen (Dark Glass)
+    noStroke();
+    fill(30, 30, 32);
+    rect(-CHARGER_W / 2 + 10, -CHARGER_H / 2 + 12, CHARGER_W - 20, CHARGER_H - 45, 6);
+
+    // Glowing Status Ring
     if (ch.car) {
-        fill(255, 59, 48, 200); // Red = busy
+        fill(255, 59, 48); // SF Red
+        drawingContext.shadowBlur = 10;
+        drawingContext.shadowColor = 'rgba(255, 59, 48, 0.6)';
     } else {
-        fill(52, 199, 89, 200); // Green = available
+        fill(52, 199, 89); // SF Green
+        drawingContext.shadowBlur = 10;
+        drawingContext.shadowColor = 'rgba(52, 199, 89, 0.6)';
     }
-    circle(0, CHARGER_H / 2 + 8, 10);
+    circle(0, CHARGER_H / 2 - 16, 10);
+    drawingContext.shadowBlur = 0; // reset shadow
 
     // Label
     fill(142, 142, 147);
-    textSize(10);
+    textSize(11);
     textAlign(CENTER);
     textStyle(BOLD);
     text('C' + (ch.id + 1), 0, -CHARGER_H / 2 - 10);
@@ -314,25 +317,45 @@ function drawCar(car) {
     push();
     translate(car.x, car.y);
 
-    // Slight color tint per car
-    tint(car.color[0], car.color[1], car.color[2]);
-    image(imgCar, 0, 0, CAR_W, CAR_H);
-    noTint();
+    // Soft drop shadow
+    noStroke();
+    fill(0, 0, 0, 20);
+    rect(-CAR_W / 2 + 4, -CAR_H / 2 + 6, CAR_W, CAR_H, 14);
+
+    // Main Body
+    fill(car.color);
+    stroke(0, 0, 0, 25);
+    strokeWeight(1);
+    rect(-CAR_W / 2, -CAR_H / 2, CAR_W, CAR_H, 14);
+
+    // Panoramic Glass Roof (Dark)
+    noStroke();
+    fill(20, 20, 25, 220);
+    rect(-CAR_W / 2 + 6, -CAR_H / 2 + 14, CAR_W - 12, CAR_H - 28, 8);
+
+    // Headlights (white glow)
+    fill(255, 255, 255, 200);
+    rect(-CAR_W / 2 + 4, -CAR_H / 2 + 2, 8, 4, 2);
+    rect(CAR_W / 2 - 12, -CAR_H / 2 + 2, 8, 4, 2);
+
+    // Taillights (red glow)
+    fill(255, 59, 48, 220);
+    rect(-CAR_W / 2 + 4, CAR_H / 2 - 6, 10, 4, 2);
+    rect(CAR_W / 2 - 14, CAR_H / 2 - 6, 10, 4, 2);
 
     // Wait label
     if (car.status === 'queueing') {
-        // Background pill
         var label = (car.waitTime * 60).toFixed(0) + 'm';
-        fill(0, 0, 0, 140);
+        fill(0, 0, 0, 180);
         noStroke();
         rectMode(CENTER);
-        rect(0, -CAR_H / 2 - 12, 30, 16, 8);
+        rect(0, -CAR_H / 2 - 14, 34, 18, 9);
         rectMode(CORNER);
-        // Text
         fill(255);
         textAlign(CENTER, CENTER);
-        textSize(9);
-        text(label, 0, -CAR_H / 2 - 12);
+        textSize(10);
+        textStyle(BOLD);
+        text(label, 0, -CAR_H / 2 - 14);
     }
 
     pop();
